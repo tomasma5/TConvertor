@@ -71,6 +71,7 @@ public class Euronaradi extends Template {
              numberOfItems = numberOfItems.replace(",", ".");
             row.setNumberOfItems(Double.parseDouble(numberOfItems));
             String priceWithoutTaxis = rowArray[4];
+            priceWithoutTaxis = priceWithoutTaxis.replace("-", "");
             priceWithoutTaxis = priceWithoutTaxis.replace(".", "");
             priceWithoutTaxis=priceWithoutTaxis.replace(",", ".");
             row.setPriceWithoutTaxes(Double.parseDouble(priceWithoutTaxis));

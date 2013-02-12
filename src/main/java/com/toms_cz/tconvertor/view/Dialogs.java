@@ -16,6 +16,8 @@ import com.toms_cz.tconvertor.business.Pht;
 import com.toms_cz.tconvertor.business.Proteco;
 import com.toms_cz.tconvertor.business.Template;
 
+import cz.toms_cz.com.tconvertor.util.TConvertorConstants;
+
 /**
  *
  * @author Tom
@@ -36,30 +38,30 @@ public class Dialogs extends JDialog {
 
         setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        Object[] possibilities = {"Fischer","PHT","Proteco","Majak","Euronaradi","Levior"};
+        Object[] possibilities = {TConvertorConstants.FISCHER,TConvertorConstants.PHT,TConvertorConstants.PROTECO,TConvertorConstants.MAJAK,TConvertorConstants.EURONARADI,TConvertorConstants.LEVIOR};
         Template template = null;
         String choosenValue = (String) JOptionPane.showInputDialog(owner, "Vyberte prosim dodavatele",
-                "Dodavatel", JOptionPane.OK_OPTION, null, possibilities, "Fischer");
+                "Dodavatel", JOptionPane.OK_OPTION, null, possibilities, TConvertorConstants.FISCHER);
         if(choosenValue==null){
             return null;
         }
         switch (choosenValue) {
-            case "Fischer":
+            case TConvertorConstants.FISCHER:
                 template = new Fischer();
                 break;
-            case "PHT":
+            case TConvertorConstants.PHT:
                 template=new Pht();
                 break;
-            case "Proteco":
+            case TConvertorConstants.PROTECO:
                 template=new Proteco();
                 break;
-            case "Majak":
+            case TConvertorConstants.MAJAK:
                 template=new MajakPlus();
                 break;
-            case "Euronaradi":
+            case TConvertorConstants.EURONARADI:
                 template=new Euronaradi();
                 break;
-            case "Levior":
+            case TConvertorConstants.LEVIOR:
                 template=new Levior();
                 break;
         }

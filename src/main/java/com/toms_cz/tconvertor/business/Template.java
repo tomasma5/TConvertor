@@ -58,7 +58,7 @@ public abstract class Template {
      * @return file content
      */
     public String readFile(File fileToRead){
-    	return readFile(fileToRead);
+    	return reader.readFile(fileToRead);
     }
 
     /**

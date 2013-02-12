@@ -53,7 +53,7 @@ public class Pht extends Template {
 				String code = splitByReg(a[j], "code=");
 				String quantity = splitByReg(a[j], "quantity=");
 				String totalPrice = splitByReg(a[j], "priceSum=");
-				String taxes = "20";
+				String taxes = "21";
 				RowData row = new RowData();
 				row.setItemCode(code);
 				row.setNumberOfItems(Double.valueOf(quantity));

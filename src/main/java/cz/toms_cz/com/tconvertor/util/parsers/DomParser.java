@@ -17,7 +17,7 @@ import com.toms_cz.tconvertor.dao.RowData;
 
 public class DomParser {
 
-	private static final String TAX_RATE = "20";
+	private static final String TAX_RATE = "21";
 	
 	private String itemStart;
 	private String code;

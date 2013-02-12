@@ -74,6 +74,9 @@ public class Fischer extends Template {
         }
         parsed = parsed.replaceAll("železobeton", "");
          parsed = parsed.replaceAll("abrazivo", "");
+         parsed = parsed.replaceAll("keramika celoob.", "");
+         parsed = parsed.replaceAll("turbo", "");
+      
         parsed = parsed.replaceAll(",", ".");
         String[] parsedArray = parsed.split("\\r?\\n");
         int numberOfGoodRow = 0;

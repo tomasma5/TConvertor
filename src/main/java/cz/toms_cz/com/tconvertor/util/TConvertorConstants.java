@@ -44,4 +44,19 @@ public final class TConvertorConstants {
     public static final String PRICE_WITH_TAXES_FIELD = "priceWT";
     public static final String TAX_RATE_FIELD = "tax";
     public static final String OUTPUT_FILE = "C://prijemky//import.dbf";
+    
+    ////////////////////////////////////////
+    /////////SUPPORTED SUBJECTS////////////
+    ///////////////////////////////////////
+    
+    public static final String PROTECO = "Proteco";
+    public static final String EURONARADI = "Euronaradi";
+    public static final String FISCHER = "Fischer";
+    public static final String LEVIOR = "Levior";
+    public static final String MAJAK = "Majak";
+    public static final String PHT = "Pht";
+    
+    
+    
+    
 }
