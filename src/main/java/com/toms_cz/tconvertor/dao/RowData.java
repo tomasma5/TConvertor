@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.toms_cz.data;
+package com.toms_cz.tconvertor.dao;
 
 /**
  *
@@ -47,6 +47,8 @@ public class RowData {
     public void setTaxRate(double taxRate) {
         this.taxRate = taxRate;
     }
+
+
     
     public RowData(){
         

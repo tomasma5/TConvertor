@@ -2,15 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.toms_cz.view;
+package com.toms_cz.tconvertor.view;
 
-import com.toms_cz.business.Pht;
-import com.toms_cz.business.FischerIm;
-import com.toms_cz.business.Template;
-import com.toms_cz.business.Proteco;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import com.toms_cz.tconvertor.business.Euronaradi;
+import com.toms_cz.tconvertor.business.Fischer;
+import com.toms_cz.tconvertor.business.Levior;
+import com.toms_cz.tconvertor.business.MajakPlus;
+import com.toms_cz.tconvertor.business.Pht;
+import com.toms_cz.tconvertor.business.Proteco;
+import com.toms_cz.tconvertor.business.Template;
 
 /**
  *
@@ -18,16 +22,21 @@ import javax.swing.JOptionPane;
  */
 public class Dialogs extends JDialog {
 
-    JFrame owner;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JFrame owner;
 
     public Dialogs(JFrame owner) {
         this.owner = owner;
     }
 
     public Template chooseTemplate() {
+
         setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        Object[] possibilities = {"Fischer","PHT","Proteco"};
+        Object[] possibilities = {"Fischer","PHT","Proteco","Majak","Euronaradi","Levior"};
         Template template = null;
         String choosenValue = (String) JOptionPane.showInputDialog(owner, "Vyberte prosim dodavatele",
                 "Dodavatel", JOptionPane.OK_OPTION, null, possibilities, "Fischer");
@@ -36,13 +45,22 @@ public class Dialogs extends JDialog {
         }
         switch (choosenValue) {
             case "Fischer":
-                template = new FischerIm();
+                template = new Fischer();
                 break;
             case "PHT":
                 template=new Pht();
                 break;
             case "Proteco":
                 template=new Proteco();
+                break;
+            case "Majak":
+                template=new MajakPlus();
+                break;
+            case "Euronaradi":
+                template=new Euronaradi();
+                break;
+            case "Levior":
+                template=new Levior();
                 break;
         }
         return template;

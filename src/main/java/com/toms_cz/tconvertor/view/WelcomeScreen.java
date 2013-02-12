@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.toms_cz.view;
+package com.toms_cz.tconvertor.view;
 
-import com.toms_cz.data.RowData;
-import com.toms_cz.business.Template;
+import cz.toms_cz.com.tconvertor.util.TConvertorConstants;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,12 +17,19 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.toms_cz.tconvertor.business.Template;
+import com.toms_cz.tconvertor.dao.RowData;
+
 /**
  *
  * @author Tom
  */
 public class WelcomeScreen extends JFrame {
-    private JMenuBar menuBar;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JMenuBar menuBar;
     private JMenu menu;
     private JMenuItem menuItem;
     private JFrame frame;
@@ -33,14 +40,13 @@ public class WelcomeScreen extends JFrame {
     private JScrollPane scrollPanel;
     private Template template;
     private Dialogs dialogs;
-    private final String welcomeText = "Vitejte, zde budou zobrazena importovana data.\r\n"
-            + "Začněte prosím volbou SOUBOR v levém horním menu.";
+
     public WelcomeScreen() {
         createMenu();
         frame = new JFrame("Converter");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         createMenu();
-        loadedFileText = new JTextArea(welcomeText);
+        loadedFileText = new JTextArea(TConvertorConstants.WELCOME_TEXT);
         loadedFileText.setBackground(Color.WHITE);
         loadedFileText.setEditable(false);
         loadedFileText.setLocation(0, 0);
@@ -88,7 +94,7 @@ public class WelcomeScreen extends JFrame {
             template = dialogs.chooseTemplate();
             if (template == null) {
                 dialogs.chooseTemplateErr();
-                loadedFileText.setText(welcomeText);
+                loadedFileText.setText(TConvertorConstants.WELCOME_TEXT);
             } else {
                 fileChoose = new JFileChooser("c://prijemky");
                 fileChoose.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -119,8 +125,7 @@ public class WelcomeScreen extends JFrame {
      */
     private ActionListener parseFile = new ActionListener() {
         @Override
-        public void actionPerformed(ActionEvent e) {    
-            
+        public void actionPerformed(ActionEvent e) {
             if (template == null) {
                 dialogs.noTemplateChoose();
                 return;
@@ -129,7 +134,6 @@ public class WelcomeScreen extends JFrame {
                 dialogs.noFileSelected();
                 return;
             }
-            
             ArrayList<RowData> dataToExport = null;
             try {
                 dataToExport = template.parsedData(loadedFileText.getText());
@@ -154,10 +158,10 @@ public class WelcomeScreen extends JFrame {
     };
 
     private void displayData(ArrayList<RowData> loadedData) {
-        Iterator loadIt = loadedData.iterator();
+        Iterator<RowData> loadIt = loadedData.iterator();
         String dataString = "Kód \t počet \t celková cena \t daň \r\n";
         while (loadIt.hasNext()) {
-            RowData actualRow = (RowData) loadIt.next();
+            RowData actualRow =  loadIt.next();
             dataString = dataString.concat(actualRow.getItemCode() + "\t" + actualRow.getNumberOfItems()
                     + "\t" + actualRow.getPriceWithoutTaxes() + "\t" + actualRow.getTaxRate() + "\r\n");
         }
