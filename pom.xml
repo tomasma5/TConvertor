@@ -19,20 +19,32 @@
 			<groupId>com.linuxense</groupId>
 			<artifactId>javadbf</artifactId>
 			<version>0.4.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/javadbf-0.4.0.jar</systemPath>
 		</dependency>		
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<plugin>
+		<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- <version>3.0</version> -->
+				<version>3.0</version> 
 				<configuration>
 					<source>${maven.compiler.version}</source>
 					<target>${maven.compiler.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>com.toms_cz.tconvertor.main.TConvertor</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>

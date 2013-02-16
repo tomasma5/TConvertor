@@ -76,7 +76,6 @@ public class Fischer extends Template {
          parsed = parsed.replaceAll("abrazivo", "");
          parsed = parsed.replaceAll("keramika celoob.", "");
          parsed = parsed.replaceAll("turbo", "");
-      
         parsed = parsed.replaceAll(",", ".");
         String[] parsedArray = parsed.split("\\r?\\n");
         int numberOfGoodRow = 0;
@@ -117,6 +116,7 @@ public class Fischer extends Template {
             } else {
                 adPieces = secondLine[0];
             }
+            adPieces = transformToOneDot(adPieces);
             nowLine.setNumberOfItems(Double.parseDouble(adPieces));
             nowLine.setTaxRate(Double.parseDouble(secondLine[secondLine.length - 2]));
             try {
@@ -132,11 +132,32 @@ public class Fischer extends Template {
             } else {
                 price = secondLine[secondLine.length - 3];
             }
+            price = transformToOneDot(price);
             nowLine.setPriceWithoutTaxes(Double.parseDouble(price));
             records.add(nowLine);
         }
         return records;
 
+    }
+    
+    private String transformToOneDot(String input){
+    	char [] tempPrice = input.toCharArray();
+        StringBuilder st = new StringBuilder();
+        boolean founded = false;
+        for(int i=0;i<tempPrice.length;i++){
+        	if((tempPrice[i]=='.' && !founded)){
+        		founded = true;
+        	}
+        	else{
+        		st.append(tempPrice[i]);
+        	}
+
+        }
+    	String tempPriceStr = st.toString();
+    	if(tempPriceStr.contains(".")){
+    		input = tempPriceStr;
+    	}
+    	return input;
     }
 
     private String[] pagesParsed(String document, int numberOfPages) {
