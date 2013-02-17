@@ -55,7 +55,7 @@ public final class TConvertorConstants {
     public static final String LEVIOR = "Levior";
     public static final String MAJAK = "Majak";
     public static final String PHT = "Pht";
-    
+    public static final String VISIMPEX = "Visimpex";    
     
     
     
