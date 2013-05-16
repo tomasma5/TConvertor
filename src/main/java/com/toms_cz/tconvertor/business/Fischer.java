@@ -20,7 +20,7 @@ import cz.toms_cz.com.tconvertor.util.readers.PDFReader;
  */
 public class Fischer extends Template {
 
-	
+	private String [] toReplace = {"železobeton","abrazivo","keramika celoob.","turbo","akční položka"};
 	/**
 	 * Constructor for this class it set default reader which will be used to read file and
 	 * file type to read.
@@ -72,10 +72,10 @@ public class Fischer extends Template {
                 parsed = stringToParse.substring(0, stopPosition);
             }
         }
-        parsed = parsed.replaceAll("železobeton", "");
-         parsed = parsed.replaceAll("abrazivo", "");
-         parsed = parsed.replaceAll("keramika celoob.", "");
-         parsed = parsed.replaceAll("turbo", "");
+         //replace all incompatible strings
+         for(int i=0;i<toReplace.length;i++){
+             parsed = parsed.replaceAll(toReplace[i], "");
+         }
         parsed = parsed.replaceAll(",", ".");
         String[] parsedArray = parsed.split("\\r?\\n");
         int numberOfGoodRow = 0;
